@@ -19,7 +19,7 @@ function Body() {
 
     async function getRestaurant() {
         const response = await axios.get(ServerConfig.RESTAURANT_URL);
-        const data = response?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        const data = response?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setFilteredRestaurant(data);
         setRestaurantList(data);
     }
