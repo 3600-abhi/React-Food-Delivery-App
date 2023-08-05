@@ -7,6 +7,9 @@ import Shimmer from "./Shimmer";
 import About from "./About";
 import PageNotFound from "./PageNotFound";
 import Contact from "./Contact";
+import Cart from "./Cart";
+
+
 
 export {
     Header,
@@ -17,5 +20,6 @@ export {
     Shimmer,
     About,
     PageNotFound,
-    Contact
+    Contact,
+    Cart
 };
