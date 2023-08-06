@@ -1,7 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { RestaurantCard, Shimmer } from "./index";
-import { ServerConfig } from "../config";
+import { fetchAllRestaurant } from "../api";
+import { filterRestaurant } from "../utils/helpers";
 
 
 
@@ -13,20 +14,12 @@ function Body() {
 
 
     useEffect(() => {
-        getRestaurant();
+        fetchAllRestaurant().then(data => {
+            setFilteredRestaurant(data);
+            setRestaurantList(data);
+        })
     }, []);
 
-
-    async function getRestaurant() {
-        const response = await axios.get(ServerConfig.RESTAURANT_URL);
-        const data = response?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        setFilteredRestaurant(data);
-        setRestaurantList(data);
-    }
-
-    function getFilteredRestaurant(searchText) {
-        return restaurantList.filter(restaurant => restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()));
-    }
 
     return restaurantList?.length === 0 ? (<Shimmer />) : (
         <>
@@ -40,10 +33,7 @@ function Body() {
 
                 <button
                     className="search-btn"
-                    onClick={() => {
-                        const filteredData = getFilteredRestaurant(searchText);
-                        setFilteredRestaurant(filteredData);
-                    }} >
+                    onClick={_ => setFilteredRestaurant(filterRestaurant(searchText, restaurantList))} >
                     Search
                 </button>
 
@@ -51,8 +41,10 @@ function Body() {
 
             <div className="restaurant-list">
                 {
-                    filteredRestaurant?.map(restraunt => (
-                        <RestaurantCard {...restraunt.info} key={restraunt.info.id} />
+                    filteredRestaurant?.map(restaurant => (
+                        <Link className="remove-underline" to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id} >
+                            <RestaurantCard {...restaurant.info} />
+                        </Link>
                     ))
                 }
             </div>

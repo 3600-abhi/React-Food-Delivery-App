@@ -16,6 +16,11 @@
     padding: 10px;
 }
 
+.nav-items > ul > li > a {
+    text-decoration: none;
+}
+
+
 .logo {
     width: 100px;
 }
@@ -45,4 +50,16 @@
 
 .border {
     border: 2px solid red
+}
+
+.remove-underline {
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu > img {
+    height: 100px;
 }

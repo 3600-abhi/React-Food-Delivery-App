@@ -6,14 +6,6 @@ function Header() {
 
     const [loginStatus, setLoginStatus] = useState(false);
 
-    function Login() {
-        setLoginStatus(true);
-    }
-
-    function Logout() {
-        setLoginStatus(false);
-    }
-
     return (
         <div className="header">
             <Title />
@@ -27,7 +19,13 @@ function Header() {
                 </ul>
             </div>
 
-            {loginStatus ? <button onClick={Logout} >Logout</button> : <button onClick={Login} >Login</button>}
+            {
+                loginStatus
+                    ?
+                    <button onClick={_ => setLoginStatus(false)} >Logout</button>
+                    :
+                    <button onClick={_ => setLoginStatus(true)} >Login</button>
+            }
 
         </div>
     );
