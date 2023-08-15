@@ -4,6 +4,7 @@ import { RouterProvider, Outlet } from "react-router-dom";
 import { Header, Footer } from "./components";
 import appRouter from "./routes/app-routes";
 
+
 /**
      
     Header
@@ -16,7 +17,7 @@ import appRouter from "./routes/app-routes";
         - Restraunt List
         - Restraunt Card
             - Image 
-            - Name 
+            - Name -
             - Rating
             - Cusiness
 
@@ -29,6 +30,8 @@ import appRouter from "./routes/app-routes";
 
 
 export default function App() {
+
+
 
     return (
         <>

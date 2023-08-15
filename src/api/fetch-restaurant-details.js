@@ -5,11 +5,9 @@ import { ServerConfig } from "../config";
 async function fetchRestaurantDetails(restaurantId) {
     const response = await axios.get(ServerConfig.RESTAURANT_MENU_URL + restaurantId);
 
-    console.log("response = ", response);
+    const data = response?.data?.data?.cards?.[0]?.card?.card?.info;
 
-    const data = response.data.data.cards[0].card.card.info;
-
-    const menuList = response.data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
+    const menuList = response?.data?.data?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
     data.menuList = [];
 
@@ -25,7 +23,6 @@ async function fetchRestaurantDetails(restaurantId) {
         }
     });
 
-    console.log("menuList = ", data.menuList);
 
     return data;
 }

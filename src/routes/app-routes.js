@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { App, PageNotFound, Body, About, Contact, RestaurantDetails } from "../components";
+import { App, PageNotFound, Body, About, Contact, RestaurantDetails, Instamart } from "../components";
 
 const appRouter = createBrowserRouter([
     {
@@ -24,6 +24,10 @@ const appRouter = createBrowserRouter([
     {
         path: "/restaurant/:id",
         element: <RestaurantDetails />
+    },
+    {
+        path: "/instamart",
+        element: <Instamart />
     }
 ]);
 

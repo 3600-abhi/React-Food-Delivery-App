@@ -4,7 +4,12 @@ import { ServerConfig } from "../config";
 
 async function fetchAllRestaurant() {
     const response = await axios.get(ServerConfig.RESTAURANT_URL);
-    const data = response?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    const data =
+        response?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        ??
+        response?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+
     return data;
 }
 
