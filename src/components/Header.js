@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "../assets/logo.png";
 import { useOnline } from "../hooks";
+import store from "../store/store";
 
 
 function Header() {
@@ -9,6 +11,7 @@ function Header() {
     const isOnline = useOnline();
 
     const [loginStatus, setLoginStatus] = useState(false);
+    const cartItems = useSelector(store => store.cart.items);
 
 
     return (
@@ -25,12 +28,10 @@ function Header() {
                     <li className="px-2" ><Link to="/" >Home</Link></li>
                     <li className="px-2" ><Link to="/about" >About</Link></li>
                     <li className="px-2" ><Link to="/contact" >Contact</Link></li>
-                    <li className="px-2" ><Link to="/cart" >Cart</Link></li>
                     <li className="px-2" ><Link to="/instamart" >Instamart</Link></li>
+                    <li className="px-2" ><Link to="/cart" >Cart-{cartItems.length}</Link></li>
                 </ul>
             </div>
-
-
 
             {
                 loginStatus

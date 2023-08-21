@@ -2,15 +2,27 @@ import axios from "axios";
 import { ServerConfig } from "../config";
 
 
+
 async function fetchAllRestaurant() {
-    const response = await axios.get(ServerConfig.RESTAURANT_URL);
-    const data =
-        response?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        ??
-        response?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    try {
+        const response = await axios.get(ServerConfig.RESTAURANT_URL);
+
+        // to fetch the data which you send from backend do -> (response.data)
+        const data = response.data.data;
+
+        return data;
+
+        /** 
+         
+            * Old data fetching when using Swiggy API directly
+        
+            const data = response?.data?.data?.cards?.[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+       */
 
 
-    return data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export default fetchAllRestaurant;

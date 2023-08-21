@@ -9,6 +9,7 @@ import PageNotFound from "./PageNotFound";
 import Contact from "./Contact";
 import Cart from "./Cart";
 import RestaurantDetails from "./RestaurantDetails";
+import MenuCard from "./MenuCard";
 import Instamart from "./Instamart";
 
 
@@ -24,5 +25,6 @@ export {
     Contact,
     Cart,
     RestaurantDetails,
+    MenuCard,
     Instamart
 };
